@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Las Cigarreras de Cádiz</title>
 
@@ -10,84 +11,172 @@
 
 <style>
 
-body{
-    margin:0;
-    background:#0e0e0e;
-    color:#e5e5e5;
-    font-family:Inter, sans-serif;
-    line-height:1.7;
-}
+/* ---------- BASE ---------- */
 
-section{
-    padding:80px 10%;
-    max-width:1000px;
-    margin:auto;
+body{
+margin:0;
+font-family:Inter;
+background:#050505;
+color:white;
+scroll-behavior:smooth;
+overflow-x:hidden;
 }
 
 h1,h2{
-    font-family:"Playfair Display", serif;
-    letter-spacing:1px;
+font-family:"Playfair Display";
+letter-spacing:1px;
 }
 
+section{
+padding:120px 10%;
+position:relative;
+}
+
+/* ---------- MENU ---------- */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(0,0,0,.6);
+backdrop-filter:blur(10px);
+z-index:999;
+display:flex;
+justify-content:center;
+gap:40px;
+padding:15px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:.9rem;
+letter-spacing:2px;
+opacity:.8;
+}
+
+nav a:hover{
+opacity:1;
+}
+
+/* ---------- HERO ---------- */
+
 .hero{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.9)),
-    url("https://images.unsplash.com/photo-1604076913837-52ab5629fba9?auto=format&fit=crop&w=1600&q=80");
-    background-size:cover;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:
+linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.95)),
+url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=80");
+background-size:cover;
+background-attachment:fixed;
 }
 
 .hero h1{
-    font-size:3rem;
+font-size:4rem;
+max-width:900px;
+animation:fadeIn 2s ease;
 }
 
-.subtitle{
-    max-width:700px;
-    opacity:.8;
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;}
 }
 
-.divider{
-    height:1px;
-    background:#333;
-    margin:60px 0;
+/* ---------- GRID ---------- */
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:80px;
+align-items:center;
 }
 
-.card{
-    background:#151515;
-    padding:30px;
-    margin-top:30px;
-    border-left:3px solid #b89b5e;
+.grid img{
+width:100%;
+border-radius:8px;
+box-shadow:0 0 40px rgba(0,0,0,.7);
 }
+
+/* ---------- SECCIONES ---------- */
+
+.dark{background:#0c0c0c;}
+
+.parallax{
+background-attachment:fixed;
+background-size:cover;
+background-position:center;
+}
+
+/* ---------- QUOTES ---------- */
 
 .quote{
-    font-style:italic;
-    opacity:.8;
-    border-left:2px solid #b89b5e;
-    padding-left:20px;
-    margin-top:20px;
+font-size:1.6rem;
+font-style:italic;
+border-left:4px solid #d2b676;
+padding-left:25px;
+margin-top:30px;
+opacity:.9;
 }
 
-footer{
-    background:#090909;
-    text-align:center;
-    padding:40px;
-    font-size:.9rem;
-    opacity:.7;
+/* ---------- TIMELINE ---------- */
+
+.timeline{
+border-left:2px solid #d2b676;
+padding-left:30px;
 }
+
+.timeline div{
+margin-bottom:40px;
+}
+
+/* ---------- AUTORES ---------- */
+
+.autores{
+text-align:center;
+background:#000;
+}
+
+.autores h2{
+margin-bottom:40px;
+}
+
+.autores p{
+line-height:2;
+}
+
+/* ---------- SCROLL ANIMATION ---------- */
 
 .fade{
-    opacity:0;
-    transform:translateY(30px);
-    transition:1s;
+opacity:0;
+transform:translateY(60px);
+transition:1.2s;
 }
 
 .fade.visible{
-    opacity:1;
-    transform:translateY(0);
+opacity:1;
+transform:translateY(0);
+}
+
+footer{
+background:black;
+text-align:center;
+padding:40px;
+opacity:.6;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:900px){
+.grid{
+grid-template-columns:1fr;
+}
+.hero h1{
+font-size:2.4rem;
+}
 }
 
 </style>
@@ -95,110 +184,94 @@ footer{
 
 <body>
 
+<!-- MENU -->
+<nav>
+<a href="#teoria">TEORÍA</a>
+<a href="#trabajo">TRABAJO</a>
+<a href="#genero">GÉNERO</a>
+<a href="#timeline">CRONOLOGÍA</a>
+<a href="#autores">AUTORES</a>
+</nav>
+
+<!-- HERO -->
 <section class="hero">
 <h1>Las Cigarreras de la Fábrica de Tabaco de Cádiz</h1>
-<p class="subtitle">
-Desigualdades de género desde el siglo XVIII analizadas desde la historia económica y la teoría social.
-</p>
+<p>Una exposición digital sobre desigualdad económica y género</p>
 </section>
 
-<section class="fade">
+<!-- TEORIA -->
+<section id="teoria" class="dark fade">
+<div class="grid">
+
+<div>
 <h2>Marco Teórico</h2>
-
-<div class="card">
-<h3>Thomas Piketty</h3>
 <p>
-El trabajo se interpreta desde el análisis de la desigualdad económica,
-la distribución del capital y la relación entre trabajo y poder social.
+La exposición interpreta el trabajo femenino desde la desigualdad económica,
+la dominación simbólica y el género como categoría histórica.
+</p>
+
+<p class="quote">
+“El poder social se reproduce incluso cuando no es visible.”
 </p>
 </div>
 
-<div class="card">
-<h3>Pierre Bourdieu</h3>
-<p>
-Se aplica el concepto de dominación masculina, habitus y violencia simbólica
-para comprender cómo las estructuras sociales reproducen desigualdades.
-</p>
-</div>
+<img src="https://images.unsplash.com/photo-1593113598332-cd59a93b1a6e?auto=format&fit=crop&w=900&q=80">
 
-<div class="card">
-<h3>Joan W. Scott</h3>
-<p>
-El género se entiende como categoría histórica de análisis que estructura
-relaciones de poder y representación social.
-</p>
 </div>
-
 </section>
 
-<div class="divider"></div>
+<!-- TRABAJO -->
+<section id="trabajo" class="parallax fade"
+style="background-image:
+linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.9)),
+url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=2000&q=80');">
 
-<section class="fade">
 <h2>Trabajo y Capital</h2>
 <p>
-El trabajo femenino puede interpretarse como parte de una estructura económica
-donde la posición social se relaciona con el acceso desigual al capital
-y al reconocimiento laboral.
+El trabajo industrial femenino revela estructuras económicas donde
+el acceso al capital condiciona la posición social.
+</p>
+
+</section>
+
+<!-- GENERO -->
+<section id="genero" class="dark fade">
+<div class="grid">
+
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80">
+
+<div>
+<h2>Dominación y Género</h2>
+<p>
+Las relaciones sociales naturalizan desigualdades mediante prácticas
+cotidianas que estructuran la experiencia femenina del trabajo.
 </p>
 
 <p class="quote">
-“La desigualdad no es accidental, sino estructural dentro del sistema económico.”
+“El género organiza las relaciones de poder en la historia.”
 </p>
+</div>
+
+</div>
 </section>
 
-<div class="divider"></div>
+<!-- TIMELINE -->
+<section id="timeline" class="fade">
+<h2>Cronología Interpretativa</h2>
 
-<section class="fade">
-<h2>Dominación y Vida Cotidiana</h2>
-<p>
-Las relaciones laborales reflejan mecanismos de dominación simbólica donde
-las diferencias de género se naturalizan mediante prácticas sociales
-y expectativas culturales.
-</p>
+<div class="timeline">
+<div><strong>Siglo XVIII</strong> — Industrialización y trabajo femenino.</div>
+<div><strong>Siglo XIX</strong> — Consolidación de jerarquías laborales.</div>
+<div><strong>Siglo XX</strong> — Transformaciones sociales y género.</div>
+<div><strong>Actualidad</strong> — Persistencia de desigualdades estructurales.</div>
+</div>
 
-<p class="quote">
-“La dominación más eficaz es aquella que no se percibe como tal.”
-</p>
 </section>
 
-<div class="divider"></div>
+<!-- AUTORES -->
+<section id="autores" class="autores fade">
+<h2>Equipo del Proyecto</h2>
 
-<section class="fade">
-<h2>El Género como Construcción Histórica</h2>
-<p>
-Desde una perspectiva historiográfica, el género actúa como herramienta
-analítica para revelar jerarquías sociales invisibles y relaciones de poder
-inscritas en la vida cotidiana.
-</p>
-</section>
-
-<div class="divider"></div>
-
-<section class="fade">
-<h2>Interpretación del Caso de las Cigarreras</h2>
-<p>
-El caso se analiza como ejemplo interpretativo donde convergen desigualdad
-económica, dominación simbólica y construcción histórica del género,
-permitiendo comprender la posición social del trabajo femenino
-en contextos industriales históricos.
-</p>
-</section>
-
-<div class="divider"></div>
-
-<section class="fade">
-<h2>Fuentes</h2>
-<ul>
-<li>Thomas Piketty — El capital en el siglo XXI</li>
-<li>Pierre Bourdieu — La dominación masculina</li>
-<li>Joan W. Scott — Gender: A Useful Category of Historical Analysis</li>
-</ul>
-</section>
-
-<div class="divider"></div>
-
-<section class="fade">
-<h2>Autores del Proyecto</h2>
 <p>
 Diego Fernández<br>
 Ricardo Chinchilla<br>
@@ -213,16 +286,18 @@ Universidad de Cádiz<br>
 Historia Económica<br>
 Profesor: Raúl Ruiz Álvarez
 </p>
+
 </section>
 
 <footer>
-Exposición digital académica — Universidad de Cádiz
+Exposición Digital Académica — Universidad de Cádiz
 </footer>
 
 <script>
+
 const faders=document.querySelectorAll(".fade");
 
-const appear=new IntersectionObserver(entries=>{
+const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
 entry.target.classList.add("visible");
@@ -230,7 +305,8 @@ entry.target.classList.add("visible");
 });
 });
 
-faders.forEach(el=>appear.observe(el));
+faders.forEach(el=>observer.observe(el));
+
 </script>
 
 </body>
