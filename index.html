@@ -1,188 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Las Cigarreras de Cádiz</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
-/* ===== PRELOADER ===== */
-
-#loader{
-position:fixed;
-width:100%;
-height:100%;
-background:black;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:9999;
-font-family:"Playfair Display";
-font-size:2rem;
-letter-spacing:3px;
-animation:fadeOut 2s forwards 2s;
-}
-
-@keyframes fadeOut{
-to{opacity:0;visibility:hidden;}
-}
-
-/* ===== CURSOR ===== */
-
-.cursor{
-width:20px;
-height:20px;
-border:2px solid #d2b676;
-border-radius:50%;
-position:fixed;
-pointer-events:none;
-transform:translate(-50%,-50%);
-z-index:999;
-transition:.1s;
-}
-
-/* ===== BASE ===== */
-
 body{
 margin:0;
-background:#040404;
-color:white;
+background:#0b0b0b;
+color:#eaeaea;
 font-family:Inter;
-scroll-behavior:smooth;
-overflow-x:hidden;
+line-height:1.85;
+}
+
+section{
+padding:100px 12%;
 }
 
 h1,h2{
 font-family:"Playfair Display";
+letter-spacing:1px;
 }
-
-/* ===== NAV ===== */
-
-nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:center;
-gap:40px;
-padding:15px;
-background:rgba(0,0,0,.4);
-backdrop-filter:blur(12px);
-transition:.4s;
-z-index:1000;
-}
-
-nav.scrolled{
-background:black;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-font-size:.85rem;
-letter-spacing:2px;
-}
-
-/* ===== HERO ===== */
 
 .hero{
 height:100vh;
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
 background:
-linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.95)),
-url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=80");
-background-size:cover;
-background-attachment:fixed;
-}
-
-.hero h1{
-font-size:4rem;
-max-width:900px;
-animation:appear 2s ease;
-}
-
-@keyframes appear{
-from{opacity:0;transform:translateY(50px);}
-}
-
-/* ===== SECTIONS ===== */
-
-section{
-padding:120px 10%;
-}
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:80px;
-align-items:center;
-}
-
-.grid img{
-width:100%;
-border-radius:10px;
-box-shadow:0 0 50px black;
-}
-
-.parallax{
-background-attachment:fixed;
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.95)),
+url("https://upload.wikimedia.org/wikipedia/commons/6/63/Cigarreras_de_Sevilla_1880.jpg");
 background-size:cover;
 background-position:center;
 }
 
+.hero h1{
+font-size:58px;
+max-width:900px;
+}
+
+.subtitle{
+color:#caa56a;
+margin-top:20px;
+font-size:18px;
+}
+
+.card{
+background:#151515;
+padding:35px;
+margin:25px 0;
+border-left:4px solid #caa56a;
+}
+
+.image{
+width:100%;
+margin:40px 0;
+border-radius:8px;
+box-shadow:0 0 40px rgba(0,0,0,.6);
+}
+
 .quote{
+font-size:22px;
 font-style:italic;
-font-size:1.5rem;
-border-left:4px solid #d2b676;
-padding-left:25px;
-margin-top:30px;
+color:#d9b37a;
+margin:50px 0;
+text-align:center;
 }
-
-/* ===== FADE SCROLL ===== */
-
-.fade{
-opacity:0;
-transform:translateY(70px);
-transition:1.3s;
-}
-
-.fade.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-/* ===== TIMELINE ===== */
 
 .timeline{
-border-left:2px solid #d2b676;
-padding-left:30px;
+border-left:2px solid #caa56a;
+padding-left:25px;
 }
 
 .timeline div{
-margin:40px 0;
+margin-bottom:35px;
 }
 
-/* ===== AUTORES ===== */
-
-.autores{
-text-align:center;
+footer{
 background:black;
-}
-
-/* ===== MOBILE ===== */
-
-@media(max-width:900px){
-.grid{grid-template-columns:1fr;}
-.hero h1{font-size:2.3rem;}
+padding:60px;
+text-align:center;
+opacity:.7;
 }
 
 </style>
@@ -190,107 +94,203 @@ background:black;
 
 <body>
 
-<div id="loader">Cargando Exposición…</div>
-<div class="cursor"></div>
-
-<nav id="navbar">
-<a href="#teoria">TEORÍA</a>
-<a href="#trabajo">TRABAJO</a>
-<a href="#genero">GÉNERO</a>
-<a href="#timeline">CRONOLOGÍA</a>
-<a href="#autores">AUTORES</a>
-</nav>
-
+<!-- HERO -->
 <section class="hero">
+<div>
 <h1>Las Cigarreras de la Fábrica de Tabaco de Cádiz</h1>
-<p>Desigualdad económica y género desde el siglo XVIII</p>
-</section>
-
-<section id="teoria" class="fade">
-<div class="grid">
-<div>
-<h2>Marco Teórico</h2>
-<p>Análisis desde desigualdad económica, dominación simbólica y género como categoría histórica.</p>
-<p class="quote">El poder social se reproduce incluso cuando no se percibe.</p>
-</div>
-<img src="https://images.unsplash.com/photo-1593113598332-cd59a93b1a6e?auto=format&fit=crop&w=900&q=80">
+<p class="subtitle">
+Trabajo femenino, desigualdad de género y transformación social en la España moderna
+</p>
 </div>
 </section>
 
-<section id="trabajo" class="parallax fade"
-style="background-image:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.9)),
-url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=2000&q=80');">
+<!-- INTRO -->
+<section>
 
-<h2>Trabajo y Capital</h2>
-<p>El trabajo femenino industrial refleja estructuras económicas desiguales.</p>
+<h2>Introducción histórica</h2>
 
-</section>
-
-<section id="genero" class="fade">
-<div class="grid">
-<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80">
-<div>
-<h2>Dominación y Género</h2>
-<p>Las relaciones sociales naturalizan desigualdades mediante prácticas culturales.</p>
-<p class="quote">El género organiza las relaciones de poder.</p>
-</div>
-</div>
-</section>
-
-<section id="timeline" class="fade">
-<h2>Cronología Interpretativa</h2>
-<div class="timeline">
-<div><strong>Siglo XVIII</strong> — Industrialización.</div>
-<div><strong>Siglo XIX</strong> — Consolidación laboral.</div>
-<div><strong>Siglo XX</strong> — Cambios sociales.</div>
-<div><strong>Actualidad</strong> — Persistencia estructural.</div>
-</div>
-</section>
-
-<section id="autores" class="autores fade">
-<h2>Equipo del Proyecto</h2>
+<div class="card">
 <p>
-Diego Fernández<br>
-Ricardo Chinchilla<br>
-Gonzalo Lozano<br>
-Daniela Corrales<br>
-Álvaro Carmona<br>
-Belén López
+La fábrica de tabacos de Cádiz constituye uno de los espacios industriales más relevantes
+para el análisis de la incorporación femenina al trabajo asalariado en la España moderna.
+Desde el siglo XVIII, miles de mujeres conocidas como cigarreras participaron en un sistema
+productivo que combinaba control estatal, producción industrial y organización laboral jerarquizada.
 </p>
 
 <p>
-Universidad de Cádiz<br>
-Historia Económica<br>
+Este fenómeno no puede entenderse únicamente como un hecho económico, sino como un proceso
+social complejo en el que confluyen desigualdades de género, transformación del trabajo y
+nuevas formas de vida urbana.
+</p>
+</div>
+
+</section>
+
+<!-- CONTEXTO -->
+<section>
+
+<h2>Contexto económico y social</h2>
+
+<div class="card">
+<p>
+El monopolio estatal del tabaco convirtió esta industria en una fuente clave de ingresos fiscales.
+La producción requería gran cantidad de mano de obra femenina debido a la precisión manual necesaria
+en la elaboración del tabaco.
+</p>
+
+<p>
+Las mujeres accedían a este empleo principalmente desde clases populares,
+lo que generó una nueva forma de dependencia económica basada en el salario industrial.
+</p>
+
+<p>
+Sin embargo, este acceso al trabajo no implicaba igualdad,
+ya que los salarios y condiciones estaban claramente diferenciados respecto a los trabajadores masculinos.
+</p>
+</div>
+
+</section>
+
+<!-- VIDA COTIDIANA -->
+<section>
+
+<h2>Vida y trabajo de las cigarreras</h2>
+
+<div class="card">
+<p>
+Las cigarreras desarrollaban su actividad en grandes salas de trabajo donde el ambiente era denso,
+con presencia constante de polvo de tabaco y largas jornadas laborales.
+</p>
+
+<p>
+A pesar de las condiciones exigentes, estas mujeres desarrollaron redes de sociabilidad,
+solidaridad y apoyo mutuo dentro del espacio fabril.
+</p>
+
+<p>
+La fábrica se convirtió así en un espacio ambivalente:
+por un lado, de explotación laboral;
+por otro, de construcción de identidad colectiva femenina.
+</p>
+</div>
+
+<img class="image" src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Cigarreras_Sevilla.jpg">
+
+</section>
+
+<!-- DESIGUALDAD -->
+<section>
+
+<h2>Desigualdad de género</h2>
+
+<div class="card">
+<p>
+Las cigarreras representan un caso paradigmático de desigualdad estructural.
+Aunque accedían al trabajo remunerado, este acceso estaba condicionado por una jerarquía de género
+que limitaba su movilidad social y económica.
+</p>
+
+<p>
+El salario femenino era inferior, y su trabajo estaba socialmente menos valorado,
+reflejando una estructura patriarcal profundamente arraigada en la sociedad industrial.
+</p>
+</div>
+
+<div class="quote">
+“La desigualdad no es un accidente histórico, sino una estructura persistente.”
+</div>
+
+</section>
+
+<!-- CONCIENCIA -->
+<section>
+
+<h2>Conciencia social y conflicto</h2>
+
+<div class="card">
+<p>
+A lo largo del tiempo, las cigarreras participaron en protestas laborales y conflictos industriales,
+mostrando una temprana conciencia colectiva.
+</p>
+
+<p>
+Estas movilizaciones reflejan la capacidad de organización femenina dentro de un sistema productivo
+que tendía a invisibilizar su papel.
+</p>
+
+<p>
+Su acción colectiva contribuyó a redefinir parcialmente los límites del trabajo femenino en la época.
+</p>
+</div>
+
+</section>
+
+<!-- TIMELINE -->
+<section>
+
+<h2>Evolución histórica</h2>
+
+<div class="timeline">
+
+<div>
+<strong>Siglo XVIII</strong>
+<p>Consolidación del monopolio del tabaco y expansión del trabajo femenino.</p>
+</div>
+
+<div>
+<strong>Siglo XIX</strong>
+<p>Crecimiento industrial y aumento de la mano de obra femenina en fábricas.</p>
+</div>
+
+<div>
+<strong>Finales del XIX</strong>
+<p>Primeras formas de organización laboral y conflictos obreros.</p>
+</div>
+
+<div>
+<strong>Siglo XX</strong>
+<p>Transformaciones industriales y progresiva pérdida del modelo tradicional.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CONCLUSION -->
+<section>
+
+<h2>Conclusión</h2>
+
+<div class="card">
+<p>
+Las cigarreras de Cádiz representan un fenómeno clave para entender la relación entre economía,
+género y trabajo en la historia contemporánea.
+Su estudio permite analizar cómo la industrialización no solo transformó la producción,
+sino también las estructuras sociales y las relaciones de poder.
+</p>
+
+<p>
+Lejos de ser un caso aislado, su experiencia refleja dinámicas estructurales de desigualdad
+que han perdurado en el tiempo.
+</p>
+</div>
+
+</section>
+
+<!-- AUTORES -->
+<footer>
+
+<p>
+Diego Fernández · Ricardo Chinchilla · Gonzalo Lozano<br>
+Daniela Corrales · Álvaro Carmona · Belén López
+</p>
+
+<p>
+Universidad de Cádiz — Historia Económica<br>
 Profesor: Raúl Ruiz Álvarez
 </p>
-</section>
 
-<script>
-
-/* CURSOR */
-const cursor=document.querySelector(".cursor");
-document.addEventListener("mousemove",e=>{
-cursor.style.left=e.clientX+"px";
-cursor.style.top=e.clientY+"px";
-});
-
-/* NAV SCROLL */
-window.addEventListener("scroll",()=>{
-document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>50);
-});
-
-/* FADE */
-const faders=document.querySelectorAll(".fade");
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("visible");
-}
-});
-});
-faders.forEach(el=>observer.observe(el));
-
-</script>
+</footer>
 
 </body>
 </html>
