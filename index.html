@@ -11,55 +11,84 @@
 
 <style>
 
-/* ---------- BASE ---------- */
+/* ===== PRELOADER ===== */
+
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+font-family:"Playfair Display";
+font-size:2rem;
+letter-spacing:3px;
+animation:fadeOut 2s forwards 2s;
+}
+
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden;}
+}
+
+/* ===== CURSOR ===== */
+
+.cursor{
+width:20px;
+height:20px;
+border:2px solid #d2b676;
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:999;
+transition:.1s;
+}
+
+/* ===== BASE ===== */
 
 body{
 margin:0;
-font-family:Inter;
-background:#050505;
+background:#040404;
 color:white;
+font-family:Inter;
 scroll-behavior:smooth;
 overflow-x:hidden;
 }
 
 h1,h2{
 font-family:"Playfair Display";
-letter-spacing:1px;
 }
 
-section{
-padding:120px 10%;
-position:relative;
-}
-
-/* ---------- MENU ---------- */
+/* ===== NAV ===== */
 
 nav{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(0,0,0,.6);
-backdrop-filter:blur(10px);
-z-index:999;
 display:flex;
 justify-content:center;
 gap:40px;
 padding:15px;
+background:rgba(0,0,0,.4);
+backdrop-filter:blur(12px);
+transition:.4s;
+z-index:1000;
+}
+
+nav.scrolled{
+background:black;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-font-size:.9rem;
+font-size:.85rem;
 letter-spacing:2px;
-opacity:.8;
 }
 
-nav a:hover{
-opacity:1;
-}
-
-/* ---------- HERO ---------- */
+/* ===== HERO ===== */
 
 .hero{
 height:100vh;
@@ -78,15 +107,18 @@ background-attachment:fixed;
 .hero h1{
 font-size:4rem;
 max-width:900px;
-animation:fadeIn 2s ease;
+animation:appear 2s ease;
 }
 
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(40px);}
-to{opacity:1;}
+@keyframes appear{
+from{opacity:0;transform:translateY(50px);}
 }
 
-/* ---------- GRID ---------- */
+/* ===== SECTIONS ===== */
+
+section{
+padding:120px 10%;
+}
 
 .grid{
 display:grid;
@@ -97,13 +129,9 @@ align-items:center;
 
 .grid img{
 width:100%;
-border-radius:8px;
-box-shadow:0 0 40px rgba(0,0,0,.7);
+border-radius:10px;
+box-shadow:0 0 50px black;
 }
-
-/* ---------- SECCIONES ---------- */
-
-.dark{background:#0c0c0c;}
 
 .parallax{
 background-attachment:fixed;
@@ -111,49 +139,20 @@ background-size:cover;
 background-position:center;
 }
 
-/* ---------- QUOTES ---------- */
-
 .quote{
-font-size:1.6rem;
 font-style:italic;
+font-size:1.5rem;
 border-left:4px solid #d2b676;
 padding-left:25px;
 margin-top:30px;
-opacity:.9;
 }
 
-/* ---------- TIMELINE ---------- */
-
-.timeline{
-border-left:2px solid #d2b676;
-padding-left:30px;
-}
-
-.timeline div{
-margin-bottom:40px;
-}
-
-/* ---------- AUTORES ---------- */
-
-.autores{
-text-align:center;
-background:#000;
-}
-
-.autores h2{
-margin-bottom:40px;
-}
-
-.autores p{
-line-height:2;
-}
-
-/* ---------- SCROLL ANIMATION ---------- */
+/* ===== FADE SCROLL ===== */
 
 .fade{
 opacity:0;
-transform:translateY(60px);
-transition:1.2s;
+transform:translateY(70px);
+transition:1.3s;
 }
 
 .fade.visible{
@@ -161,22 +160,29 @@ opacity:1;
 transform:translateY(0);
 }
 
-footer{
-background:black;
-text-align:center;
-padding:40px;
-opacity:.6;
+/* ===== TIMELINE ===== */
+
+.timeline{
+border-left:2px solid #d2b676;
+padding-left:30px;
 }
 
-/* ---------- MOBILE ---------- */
+.timeline div{
+margin:40px 0;
+}
+
+/* ===== AUTORES ===== */
+
+.autores{
+text-align:center;
+background:black;
+}
+
+/* ===== MOBILE ===== */
 
 @media(max-width:900px){
-.grid{
-grid-template-columns:1fr;
-}
-.hero h1{
-font-size:2.4rem;
-}
+.grid{grid-template-columns:1fr;}
+.hero h1{font-size:2.3rem;}
 }
 
 </style>
@@ -184,8 +190,10 @@ font-size:2.4rem;
 
 <body>
 
-<!-- MENU -->
-<nav>
+<div id="loader">Cargando Exposición…</div>
+<div class="cursor"></div>
+
+<nav id="navbar">
 <a href="#teoria">TEORÍA</a>
 <a href="#trabajo">TRABAJO</a>
 <a href="#genero">GÉNERO</a>
@@ -193,85 +201,54 @@ font-size:2.4rem;
 <a href="#autores">AUTORES</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 <h1>Las Cigarreras de la Fábrica de Tabaco de Cádiz</h1>
-<p>Una exposición digital sobre desigualdad económica y género</p>
+<p>Desigualdad económica y género desde el siglo XVIII</p>
 </section>
 
-<!-- TEORIA -->
-<section id="teoria" class="dark fade">
+<section id="teoria" class="fade">
 <div class="grid">
-
 <div>
 <h2>Marco Teórico</h2>
-<p>
-La exposición interpreta el trabajo femenino desde la desigualdad económica,
-la dominación simbólica y el género como categoría histórica.
-</p>
-
-<p class="quote">
-“El poder social se reproduce incluso cuando no es visible.”
-</p>
+<p>Análisis desde desigualdad económica, dominación simbólica y género como categoría histórica.</p>
+<p class="quote">El poder social se reproduce incluso cuando no se percibe.</p>
 </div>
-
 <img src="https://images.unsplash.com/photo-1593113598332-cd59a93b1a6e?auto=format&fit=crop&w=900&q=80">
-
 </div>
 </section>
 
-<!-- TRABAJO -->
 <section id="trabajo" class="parallax fade"
-style="background-image:
-linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.9)),
+style="background-image:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.9)),
 url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=2000&q=80');">
 
 <h2>Trabajo y Capital</h2>
-<p>
-El trabajo industrial femenino revela estructuras económicas donde
-el acceso al capital condiciona la posición social.
-</p>
+<p>El trabajo femenino industrial refleja estructuras económicas desiguales.</p>
 
 </section>
 
-<!-- GENERO -->
-<section id="genero" class="dark fade">
+<section id="genero" class="fade">
 <div class="grid">
-
 <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80">
-
 <div>
 <h2>Dominación y Género</h2>
-<p>
-Las relaciones sociales naturalizan desigualdades mediante prácticas
-cotidianas que estructuran la experiencia femenina del trabajo.
-</p>
-
-<p class="quote">
-“El género organiza las relaciones de poder en la historia.”
-</p>
+<p>Las relaciones sociales naturalizan desigualdades mediante prácticas culturales.</p>
+<p class="quote">El género organiza las relaciones de poder.</p>
 </div>
-
 </div>
 </section>
 
-<!-- TIMELINE -->
 <section id="timeline" class="fade">
 <h2>Cronología Interpretativa</h2>
-
 <div class="timeline">
-<div><strong>Siglo XVIII</strong> — Industrialización y trabajo femenino.</div>
-<div><strong>Siglo XIX</strong> — Consolidación de jerarquías laborales.</div>
-<div><strong>Siglo XX</strong> — Transformaciones sociales y género.</div>
-<div><strong>Actualidad</strong> — Persistencia de desigualdades estructurales.</div>
+<div><strong>Siglo XVIII</strong> — Industrialización.</div>
+<div><strong>Siglo XIX</strong> — Consolidación laboral.</div>
+<div><strong>Siglo XX</strong> — Cambios sociales.</div>
+<div><strong>Actualidad</strong> — Persistencia estructural.</div>
 </div>
-
 </section>
 
-<!-- AUTORES -->
 <section id="autores" class="autores fade">
 <h2>Equipo del Proyecto</h2>
-
 <p>
 Diego Fernández<br>
 Ricardo Chinchilla<br>
@@ -286,17 +263,24 @@ Universidad de Cádiz<br>
 Historia Económica<br>
 Profesor: Raúl Ruiz Álvarez
 </p>
-
 </section>
-
-<footer>
-Exposición Digital Académica — Universidad de Cádiz
-</footer>
 
 <script>
 
-const faders=document.querySelectorAll(".fade");
+/* CURSOR */
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+});
 
+/* NAV SCROLL */
+window.addEventListener("scroll",()=>{
+document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>50);
+});
+
+/* FADE */
+const faders=document.querySelectorAll(".fade");
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
@@ -304,7 +288,6 @@ entry.target.classList.add("visible");
 }
 });
 });
-
 faders.forEach(el=>observer.observe(el));
 
 </script>
